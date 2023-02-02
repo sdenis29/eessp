@@ -1,0 +1,34 @@
+  <div class="bg-red-700">
+    <nav class="border-b border-red-300 border-opacity-25 bg-red-700 lg:border-none">
+      <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+        <div class="relative flex h-16 items-center justify-between lg:border-b lg:border-red-400 lg:border-opacity-25">
+          <div class="flex items-center px-2 lg:px-0">
+            <div class="hidden lg:ml-10 lg:block">
+              <div class="flex space-x-4">
+                <%= link_to 'Pacienti', root_path, class:'bg-red-900 text-white rounded-md py-2 px-3 text-sm font-medium' %>
+
+                <%= link_to 'Fise clinica medicala', records_path, class:'text-white hover:bg-red-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium' %>
+              </div>
+            </div>
+          </div>
+          <div class="hidden lg:ml-4 lg:block">
+            <div class="flex items-center">
+              <div class="relative ml-3 flex-shrink-0">
+                <% if current_user.nil? %>
+                  <div>
+                    <%= link_to 'Login', new_user_session_path, class:'text-white hover:bg-red-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-md font-bold' %>
+                    <%= link_to 'Sign Up', new_user_registration_path, class:'text-white hover:bg-red-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-md font-bold' %>
+                  </div>
+                <% else %>
+                  <div class="inline-flex">
+                    <%= link_to "Dr. #{current_user.prenume} #{current_user.nume}", edit_user_registration_path, class:'text-white hover:bg-red-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-md font-bold' %>
+                    <%= button_to 'Logout', destroy_user_session_path, method: :delete, data: { turbo: false }, class:'text-white hover:bg-red-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-md font-bold' %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
