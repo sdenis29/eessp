@@ -240,6 +240,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jquery-rails
+  matrix (~> 0.4.2)
   pg (~> 1.1)
   prawn (~> 2.4)
   puma (~> 5.0)

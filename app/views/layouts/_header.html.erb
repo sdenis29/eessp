@@ -3,12 +3,19 @@
       <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
         <div class="relative flex h-16 items-center justify-between lg:border-b lg:border-red-400 lg:border-opacity-25">
           <div class="flex items-center px-2 lg:px-0">
-            <%= image_tag 'logo_header.png', size:'100x100' %>
+            <%= link_to root_url do %>
+              <%= image_tag 'logo_header.png', size:'100x100' %>
+            <% end %>
             <div class="hidden lg:ml-10 lg:block">
+              <%
+                active = 'bg-red-900'
+                patients = active if yield(:form).include?('patients')
+                records = active if yield(:form).include?('records')
+              %>
               <div class="flex space-x-4">
-                <%= link_to 'Pacienti', root_path, class:'bg-red-900 text-white rounded-md py-2 px-3 text-sm font-medium' %>
+                <%= link_to 'Pacienti', patients_path, class:"#{patients} text-white rounded-md py-2 px-3 text-sm font-medium" %>
 
-                <%= link_to 'Fise clinica medicala', records_path, class:'text-white hover:bg-red-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium' %>
+                <%= link_to 'Fise clinica medicala', records_path, class:"#{records} text-white hover:bg-red-500 hover:bg-opacity-75 rounded-md py-2 px-3 text-sm font-medium" %>
               </div>
             </div>
           </div>
